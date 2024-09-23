@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  go-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - SEPOLIA_PRIVATE_KEY=b593b6c565b19862cadf174c0773a8d6cf158f14e72b13fbf11670d122109d49
+      - CONTRACT_ADDRESS=0xe166238e63c539175b5Cb512A8C29bB7087B85Fe
+      - URL=https://sepolia.infura.io/v3/831d9436f0ad4fecbe9e385d0eaf92da
+    volumes:
+      - ./:/app
+    command: go run main.go
+
+  go-app2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+    environment:
+      - SEPOLIA_PRIVATE_KEY=764b9fd664b561a8d16a09f68ccc7b46ac12c13d77291af004313d0f06eb673a
+      - CONTRACT_ADDRESS=0xe166238e63c539175b5Cb512A8C29bB7087B85Fe
+      - URL=https://sepolia.infura.io/v3/831d9436f0ad4fecbe9e385d0eaf92da
+    volumes:
+      - ./:/app
+    command: go run main.go
+  
+  go-app3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8080"
+    environment:
+      - SEPOLIA_PRIVATE_KEY=0a6bd9a5d301340ca783e619bbc63fdbdede3fa30bd35d2455b8a7929cd9b10a
+      - CONTRACT_ADDRESS=0xe166238e63c539175b5Cb512A8C29bB7087B85Fe
+      - URL=https://sepolia.infura.io/v3/831d9436f0ad4fecbe9e385d0eaf92da
+    volumes:
+      - ./:/app
+    command: go run main.go
+  
+  go-app4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8080"
+    environment:
+      - SEPOLIA_PRIVATE_KEY=e022e74408cc1a2c4b76ee496d556cff284588edafadf5b317c0e0615afb294a
+      - CONTRACT_ADDRESS=0xe166238e63c539175b5Cb512A8C29bB7087B85Fe
+      - URL=https://sepolia.infura.io/v3/831d9436f0ad4fecbe9e385d0eaf92da
+    volumes:
+      - ./:/app
+    command: go run main.go
+
+  go-app5:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8084:8080"
+    environment:
+      - SEPOLIA_PRIVATE_KEY=7165c94fe8acfe0609456a70e6df3d98a15c2655695b1166fabad2654c16122b
+      - CONTRACT_ADDRESS=0xe166238e63c539175b5Cb512A8C29bB7087B85Fe
+      - URL=https://sepolia.infura.io/v3/831d9436f0ad4fecbe9e385d0eaf92da
+    volumes:
+      - ./:/app
+    command: go run main.go
