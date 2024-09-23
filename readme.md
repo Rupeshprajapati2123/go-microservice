@@ -1,0 +1,1 @@
+## the contract works as when someone creates a transaction it locks the mutex and creates a transaction and then when the transaction get created, and event gets emitted and then an approver listens to the event and approves it, if it's not get approved it would be placed into failedTransaction
