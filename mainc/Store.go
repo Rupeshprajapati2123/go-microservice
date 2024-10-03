@@ -56,6 +56,22 @@ type Store struct {
 	StoreTransactor // Write-only binding to the contract
 	StoreFilterer   // Log filterer for contract events
 }
+var StoreBin = StoreMetaData.Bin
+func DeployStore(auth *bind.TransactOpts, backend bind.ContractBackend, _version string) (common.Address, *types.Transaction, *Store, error) {
+	parsed, err := StoreMetaData.GetAbi()
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	if parsed == nil {
+		return common.Address{}, nil, nil, errors.New("GetABI returned nil")
+	}
+
+	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(StoreBin), backend, _version)
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	return address, tx, &Store{StoreCaller: StoreCaller{contract: contract}, StoreTransactor: StoreTransactor{contract: contract}, StoreFilterer: StoreFilterer{contract: contract}}, nil
+}
 
 // StoreCaller is an auto generated read-only Go binding around an Ethereum contract.
 type StoreCaller struct {
